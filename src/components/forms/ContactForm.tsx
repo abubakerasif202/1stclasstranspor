@@ -1,0 +1,9 @@
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useState } from 'react'
+import { useForm } from 'react-hook-form'
+import { contactSchema, type ContactData } from '../../lib/formSchemas'
+import { submitContactForm } from '../../lib/formSubmission'
+import { FormError } from './FormError'
+import { FormField } from './FormField'
+import { FormSuccess } from './FormSuccess'
+export function ContactForm() { const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm<ContactData>({ resolver: zodResolver(contactSchema), defaultValues: { consent: false, website: '' } }); const [result, setResult] = useState<{success:boolean; reference?:string; message?:string}>(); const send = async (data: ContactData) => setResult(await submitContactForm(data)); if (result?.success) return <FormSuccess reference={result.reference}/>; return <form noValidate onSubmit={handleSubmit(send)} className="space-y-5"><FormField label="Name" autoComplete="name" error={errors.name?.message} {...register('name')}/><FormField label="Email" type="email" autoComplete="email" error={errors.email?.message} {...register('email')}/><FormField label="Phone" type="tel" inputMode="tel" error={errors.phone?.message} {...register('phone')}/><FormField label="How can we help?" textarea error={errors.message?.message} {...register('message')}/><input className="hidden" tabIndex={-1} autoComplete="off" aria-hidden="true" {...register('website')}/><label className="flex items-start gap-3 text-sm"><input className="mt-1 h-4 w-4 accent-red" type="checkbox" {...register('consent')}/><span>I consent to 1st Class Express using these details to respond to my enquiry.</span></label>{errors.consent && <p className="text-sm font-semibold text-red" role="alert">{errors.consent.message}</p>}{result?.message && <FormError message={result.message}/>}<button className="button-primary" disabled={isSubmitting}>{isSubmitting ? 'Sending…' : 'Send Enquiry'}</button></form> }

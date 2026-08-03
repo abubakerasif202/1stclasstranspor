@@ -1,0 +1,7 @@
+import { ArrowRight } from 'lucide-react'
+import { PageHero } from '../components/common/PageHero'
+import { SEO } from '../components/common/SEO'
+import { Button } from '../components/common/Button'
+import { services } from '../content/services'
+import { seo } from '../content/seo'
+export function ServicesPage() { return <><SEO {...seo.services}/><PageHero eyebrow="Services" title="Freight Support for the Work in Front of You" copy="Local courier, regional freight, linehaul and interstate transport enquiries considered around your requirements."/><section className="section"><div className="container-page space-y-6">{services.map((service,index)=>{const Icon=service.Icon; return <article className={`grid gap-6 border-t border-charcoal/15 py-8 lg:grid-cols-[.3fr_1fr_.7fr] ${index%2 ? 'lg:pl-[12%]' : ''}`} key={service.name}><div><Icon className="text-red" size={30}/><p className="mt-4 text-xs font-bold uppercase tracking-widest text-gold">Service {String(index+1).padStart(2,'0')}</p></div><div><h2 className="text-3xl font-bold">{service.name}</h2><p className="mt-3 leading-7 text-slate">{service.summary}</p></div><div><p className="text-sm font-bold">Suitable for</p><ul className="mt-3 space-y-2 text-sm leading-6 text-slate">{service.uses.map(x=><li key={x}>— {x}</li>)}</ul><Button to="/quote" variant="secondary" className="mt-5">Request Quote <ArrowRight size={15}/></Button></div></article>})}</div></section></> }

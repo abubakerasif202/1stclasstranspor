@@ -1,0 +1,1 @@
+export function RouteLine() { return <svg aria-hidden="true" viewBox="0 0 600 70" className="h-16 w-full"><path d="M0 40C100 10 170 70 285 35s190-30 315-6" fill="none" stroke="#D5B75E" strokeWidth="2" className="route-motion" /><circle cx="285" cy="35" r="5" fill="#F23855" /></svg> }

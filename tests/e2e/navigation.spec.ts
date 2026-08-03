@@ -1,0 +1,3 @@
+import { expect, test } from '@playwright/test'
+test('header navigation reaches services', async ({ page }) => { await page.goto('/'); await page.getByRole('button', { name: 'Skip Intro' }).click(); await page.getByRole('link', { name: 'Services', exact: true }).first().click(); await expect(page).toHaveURL(/\/services$/); await expect(page.getByRole('heading', { name: /freight support/i })).toBeVisible() })
+test('contact links are actionable', async ({ page }) => { await page.goto('/contact'); await expect(page.getByRole('link', { name: /0431 604 240/i }).first()).toHaveAttribute('href', 'tel:+61431604240') })

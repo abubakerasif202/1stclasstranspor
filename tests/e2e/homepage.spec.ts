@@ -1,0 +1,3 @@
+import { expect, test } from '@playwright/test'
+test('desktop homepage intro can be skipped and heading is visible', async ({ page }) => { await page.goto('/'); await page.getByRole('button', { name: 'Skip Intro' }).click(); await expect(page.getByRole('heading', { name: /moving australia/i })).toBeVisible(); await expect(page.locator('body')).toHaveCSS('overflow-x', 'hidden') })
+test('homepage remains within viewport width', async ({ page }) => { await page.goto('/'); await page.getByRole('button', { name: 'Skip Intro' }).click(); expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true) })

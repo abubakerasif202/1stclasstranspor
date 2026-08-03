@@ -1,0 +1,2 @@
+import type { Config } from 'tailwindcss'
+export default { content: ['./index.html', './src/**/*.{ts,tsx}'], theme: { extend: { colors: { ink: '#090A0C', charcoal: '#15181C', 'charcoal-soft': '#20252A', navy: '#102535', gold: '#D5B75E', 'gold-light': '#E4CF83', red: '#F23855', 'red-dark': '#C9233C', cream: '#F7F5EF', 'soft-grey': '#E7EAED', slate: '#37434B' }, fontFamily: { display: ['Manrope', 'sans-serif'], body: ['Inter', 'sans-serif'] } } }, plugins: [] } satisfies Config

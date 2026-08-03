@@ -1,0 +1,3 @@
+import { useCallback, useState } from 'react'
+import { useReducedMotionPreference } from './useReducedMotionPreference'
+export function usePointerTilt() { const reduced = useReducedMotionPreference(); const [style, setStyle] = useState({}); const move = useCallback((event: React.PointerEvent<HTMLElement>) => { if (reduced || event.pointerType !== 'mouse') return; const box = event.currentTarget.getBoundingClientRect(); const x = (event.clientX - box.left) / box.width - .5; const y = (event.clientY - box.top) / box.height - .5; setStyle({ transform: `perspective(800px) rotateX(${(-y * 4).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)` }); }, [reduced]); return { style, onPointerMove: move, onPointerLeave: () => setStyle({}) } }

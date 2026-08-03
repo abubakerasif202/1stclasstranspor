@@ -1,0 +1,3 @@
+import { motion } from 'framer-motion'
+import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
+export function HeadlightLayer() { const reduced = useReducedMotionPreference(); return <motion.div aria-hidden="true" className="absolute inset-x-0 bottom-[25%] mx-auto h-48 w-[80vw] bg-[radial-gradient(ellipse_at_35%_50%,rgba(255,247,200,.9),transparent_4%),radial-gradient(ellipse_at_65%_50%,rgba(255,247,200,.9),transparent_4%),linear-gradient(90deg,transparent,rgba(255,244,191,.10),transparent)] blur-xl" initial={{ opacity: 0, scale: .25 }} animate={{ opacity: reduced ? .3 : [0,.2,.8,0], scale: reduced ? 1 : [ .25,.55,1.8,2.5] }} transition={{ duration: reduced ? .2 : 2.8, delay: reduced ? 0 : .5, times: [0,.25,.75,1] }} /> }

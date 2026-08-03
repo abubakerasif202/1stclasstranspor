@@ -1,0 +1,3 @@
+import { PageHero } from '../components/common/PageHero'
+import { SEO } from '../components/common/SEO'
+export function PrivacyPage() { return <><SEO title="Privacy | 1st Class Express" description="Privacy information for 1st Class Express."/><PageHero eyebrow="Privacy" title="Privacy Information" copy="How enquiry information is handled."/><section className="section"><div className="container-page max-w-3xl space-y-5 leading-7 text-slate"><p>Information submitted through this website is used to respond to transport, quote and booking enquiries. It is not used to make unsupported marketing claims.</p><p>Contact 1st Class Express directly if you have a question about information supplied through an enquiry.</p></div></section></> }

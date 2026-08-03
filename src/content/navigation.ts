@@ -1,0 +1,1 @@
+export const navigation = [{ label: 'Home', to: '/' }, { label: 'About Us', to: '/about' }, { label: 'Services', to: '/services' }, { label: 'Service Areas', to: '/service-areas' }, { label: 'Our Fleet', to: '/fleet' }, { label: 'Book Now', to: '/book' }, { label: 'Contact', to: '/contact' }] as const

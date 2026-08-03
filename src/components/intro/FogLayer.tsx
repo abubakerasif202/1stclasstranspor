@@ -1,0 +1,1 @@
+export function FogLayer() { return <div aria-hidden="true" className="fog-motion absolute -bottom-12 left-0 h-52 w-[130%] bg-[radial-gradient(ellipse,rgba(225,236,241,.16),transparent_62%)] blur-2xl" /> }

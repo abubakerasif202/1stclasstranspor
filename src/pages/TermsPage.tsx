@@ -1,0 +1,3 @@
+import { PageHero } from '../components/common/PageHero'
+import { SEO } from '../components/common/SEO'
+export function TermsPage() { return <><SEO title="Terms | 1st Class Express" description="Website terms for 1st Class Express."/><PageHero eyebrow="Terms" title="Website Terms" copy="Important information about website and booking enquiries."/><section className="section"><div className="container-page max-w-3xl space-y-5 leading-7 text-slate"><p>Information on this website is general in nature. Transport availability, route suitability and any booking are subject to review and acceptance by 1st Class Express.</p><p>A booking enquiry is not a confirmed booking until it has been reviewed and accepted.</p></div></section></> }

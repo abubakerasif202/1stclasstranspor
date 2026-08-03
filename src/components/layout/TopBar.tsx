@@ -1,0 +1,3 @@
+import { Mail, Phone } from 'lucide-react'
+import { company } from '../../content/company'
+export function TopBar() { return <div className="hidden border-b border-white/10 bg-ink text-xs text-soft-grey lg:block"><div className="container-page flex h-9 items-center justify-between"><span className="font-semibold tracking-wide">Australian Owned <i className="mx-2 text-gold">•</i> Interstate Freight Services</span><div className="flex gap-5"><a className="inline-flex items-center gap-2 hover:text-white" href={company.emailHref}><Mail size={13}/>{company.email}</a><a className="inline-flex items-center gap-2 hover:text-white" href={company.phoneHref}><Phone size={13}/>{company.phone}</a></div></div></div> }

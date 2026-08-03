@@ -1,0 +1,2 @@
+import { CheckCircle2 } from 'lucide-react'
+export function FormSuccess({ reference }: { reference?: string }) { return <div role="status" className="border border-green-700/30 bg-green-50 p-6 text-green-950"><CheckCircle2 className="text-green-700"/><h2 className="mt-3 font-display text-2xl font-bold">Thank you — your enquiry has been received.</h2><p className="mt-2 text-sm">We’ll review the details and respond as soon as possible. {reference && <span>Reference: {reference}.</span>}</p></div> }

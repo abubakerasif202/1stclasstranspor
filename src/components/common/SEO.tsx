@@ -1,0 +1,4 @@
+import { useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
+import { company } from '../../content/company'
+export function SEO({ title, description }: { title: string; description: string }) { const { pathname } = useLocation(); useEffect(() => { document.title = title; const set = (selector: string, value: string, attribute = 'content') => { let node = document.head.querySelector(selector) as HTMLMetaElement | HTMLLinkElement | null; if (!node) { node = selector.startsWith('link') ? document.createElement('link') : document.createElement('meta'); document.head.append(node) } node.setAttribute(attribute, value) }; set('meta[name="description"]', description); set('meta[property="og:title"]', title); set('meta[property="og:description"]', description); set('link[rel="canonical"]', `${company.website}${pathname}`, 'href'); }, [title, description, pathname]); return null }

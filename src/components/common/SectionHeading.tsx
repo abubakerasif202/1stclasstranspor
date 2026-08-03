@@ -1,0 +1,2 @@
+type Props = { eyebrow?: string; title: string; copy?: string; inverted?: boolean }
+export function SectionHeading({ eyebrow, title, copy, inverted }: Props) { return <div className="max-w-3xl"><p className="eyebrow">{eyebrow}</p><h2 className={`mt-3 text-4xl font-extrabold leading-[1.05] sm:text-5xl ${inverted ? 'text-white' : 'text-charcoal'}`}>{title}</h2>{copy && <p className={`mt-5 max-w-2xl text-base leading-7 ${inverted ? 'text-soft-grey' : 'text-slate'}`}>{copy}</p>}</div> }

@@ -1,0 +1,3 @@
+import { motion } from 'framer-motion'
+import { company } from '../../content/company'
+export function IntroLogoReveal({ reduced, mobile }: { reduced: boolean; mobile: boolean }) { const delay = reduced ? .1 : mobile ? 2.15 : 3.25; return <motion.div className="absolute inset-0 flex flex-col items-center justify-center text-center" initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay, duration: reduced ? .35 : .5 }}><p className="font-display text-5xl font-extrabold tracking-[-.1em] text-white sm:text-7xl">1ST CLASS</p><p className="mt-1 text-xs font-bold tracking-[.45em] text-gold sm:text-sm">EXPRESS</p><p className="mt-6 px-5 text-sm text-soft-grey sm:text-base">{company.tagline}</p></motion.div> }
