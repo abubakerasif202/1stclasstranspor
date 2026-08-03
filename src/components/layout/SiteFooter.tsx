@@ -9,7 +9,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 pb-12 md:grid-cols-[1.2fr_.8fr_.9fr]">
         <div>
           <Link to="/" aria-label="1st Class Express home" className="inline-block">
-            <img src="/assets/brand/logo-primary.svg" alt="1st Class Express" width="270" height="64" className="h-16 w-auto" loading="lazy" />
+            <img src="/assets/brand/logo-horizontal.png" alt="1st Class Express" width="920" height="210" className="h-16 w-auto max-w-full object-contain object-left" loading="lazy" />
           </Link>
           <p className="mt-5 max-w-sm leading-7">Transport and Logistics Specialists. From 1 Tonne Vans to Road Trains, Keeping Australia on the Move.</p>
         </div>

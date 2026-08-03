@@ -10,10 +10,10 @@ export function Brand() {
   return (
     <Link to="/" aria-label="1st Class Express home" className="inline-flex shrink-0 items-center">
       <img
-        src="/assets/brand/logo-primary.svg"
+        src="/assets/brand/logo-horizontal.png"
         alt="1st Class Express"
-        width="228"
-        height="54"
+        width="920"
+        height="210"
         className="h-11 w-auto sm:h-12"
       />
     </Link>

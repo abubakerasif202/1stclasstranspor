@@ -11,7 +11,7 @@ export function IntroLogoReveal({ reduced, mobile }: { reduced: boolean; mobile:
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: reduced ? 0.2 : 0.45 }}
     >
-      <img src="/assets/brand/logo-primary.svg" alt="1st Class Express" width="520" height="123" className="h-auto w-[min(82vw,32rem)] drop-shadow-2xl" />
+      <img src="/assets/brand/logo-horizontal.png" alt="1st Class Express" width="920" height="210" className="h-auto w-[min(88vw,42rem)] drop-shadow-2xl" />
       <p className="mt-6 text-sm text-soft-grey sm:text-base">{company.tagline}</p>
     </motion.div>
   )

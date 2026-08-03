@@ -4,8 +4,10 @@ The repository contains a complete local production asset set. No remote image h
 
 ## Brand assets
 
-- `public/assets/brand/logo-primary.svg` and `.png`: horizontal primary wordmark.
+- `public/assets/brand/logo-primary.png`: deployment-optimised complete official master artwork.
+- `public/assets/brand/logo-primary.svg`: scalable browser wrapper for the horizontal lockup.
 - `public/assets/brand/logo-mark.svg` and `.png`: compact brand mark.
+- `public/assets/brand/logo-horizontal.png`: deployment-optimised horizontal lockup derived from the supplied official artwork.
 - `public/favicon/favicon.svg` and `.png`: browser and manifest icons.
 - `public/assets/og/og-home.jpg`: 1200 × 630 social sharing image.
 

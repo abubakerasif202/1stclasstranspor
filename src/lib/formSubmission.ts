@@ -3,6 +3,7 @@ import type { BookingData, ContactData, QuoteData } from './formSchemas'
 export type FormSubmissionResult = { success: true; reference?: string } | { success: false; message: string }
 
 const configurationMessage = 'Online form delivery is not configured. Please call or email us directly.'
+const defaultFormspreeEndpoint = 'https://formspree.io/f/mlgqqqld'
 
 function getSecureEndpoint(value: string | undefined): string | null {
   if (!value) return null
@@ -14,7 +15,19 @@ function getSecureEndpoint(value: string | undefined): string | null {
   }
 }
 
-async function submit(endpointValue: string | undefined, payload: unknown): Promise<FormSubmissionResult> {
+function preparePayload(payload: unknown, kind: 'Quote' | 'Booking' | 'Contact') {
+  const values = payload as Record<string, unknown>
+  const { website, ...fields } = values
+  return {
+    ...fields,
+    _gotcha: website ?? '',
+    _subject: `1st Class Express — New ${kind} Enquiry`,
+    enquiryType: kind,
+    submittedFrom: typeof window === 'undefined' ? undefined : `${window.location.origin}${window.location.pathname}`,
+  }
+}
+
+async function submit(endpointValue: string | undefined, payload: unknown, kind: 'Quote' | 'Booking' | 'Contact'): Promise<FormSubmissionResult> {
   const endpoint = getSecureEndpoint(endpointValue)
   if (!endpoint) return { success: false, message: configurationMessage }
 
@@ -25,7 +38,7 @@ async function submit(endpointValue: string | undefined, payload: unknown): Prom
     const response = await fetch(endpoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(preparePayload(payload, kind)),
       signal: controller.signal,
     })
 
@@ -49,6 +62,8 @@ async function submit(endpointValue: string | undefined, payload: unknown): Prom
   }
 }
 
-export const submitQuoteForm = (data: QuoteData) => submit(import.meta.env.VITE_QUOTE_FORM_ENDPOINT, data)
-export const submitBookingForm = (data: BookingData) => submit(import.meta.env.VITE_BOOKING_FORM_ENDPOINT, data)
-export const submitContactForm = (data: ContactData) => submit(import.meta.env.VITE_CONTACT_FORM_ENDPOINT, data)
+const formspreeEndpoint = import.meta.env.VITE_FORMSPREE_ENDPOINT || defaultFormspreeEndpoint
+
+export const submitQuoteForm = (data: QuoteData) => submit(formspreeEndpoint, data, 'Quote')
+export const submitBookingForm = (data: BookingData) => submit(formspreeEndpoint, data, 'Booking')
+export const submitContactForm = (data: ContactData) => submit(formspreeEndpoint, data, 'Contact')

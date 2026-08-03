@@ -16,17 +16,15 @@ The application is available at `http://localhost:5173` by default.
 
 ## Form delivery configuration
 
-Set public HTTPS receiver URLs in `.env` locally and in the Vercel project environment:
+The supplied Formspree endpoint is integrated as the production default. To override it for another environment, set:
 
 ```env
-VITE_QUOTE_FORM_ENDPOINT=https://api.example.com/forms/quote
-VITE_BOOKING_FORM_ENDPOINT=https://api.example.com/forms/booking
-VITE_CONTACT_FORM_ENDPOINT=https://api.example.com/forms/contact
+VITE_FORMSPREE_ENDPOINT=https://formspree.io/f/mlgqqqld
 ```
 
-`VITE_*` values are public in the browser bundle and must never contain secrets. Each endpoint must accept JSON `POST` requests and should return a successful HTTP status. It may optionally return JSON containing a string `reference` or `id`.
+`VITE_*` values are public in the browser bundle and must never contain secrets. The Formspree form ID and endpoint are intentionally public.
 
-If an endpoint is missing or invalid, the form displays a configuration error and directs the visitor to phone or email. The application never simulates a successful submission.
+Quote, booking and contact enquiries use the same Formspree form and include an `enquiryType` field plus a tailored email subject so submissions remain easy to distinguish. Invalid endpoints and failed requests display a real error; the application never simulates a successful submission.
 
 ## Quality checks
 
@@ -50,7 +48,7 @@ vercel
 vercel --prod
 ```
 
-Add the three form endpoint variables in Vercel before promoting the deployment to production.
+No Vercel environment variable is required for the supplied Formspree form. Add `VITE_FORMSPREE_ENDPOINT` only when overriding the built-in endpoint.
 
 ## Assets
 
