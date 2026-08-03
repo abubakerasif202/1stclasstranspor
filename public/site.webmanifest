@@ -1,0 +1,13 @@
+{
+  "name": "1st Class Express",
+  "short_name": "1st Class",
+  "description": "Australian courier, freight and logistics services.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090A0C",
+  "theme_color": "#090A0C",
+  "icons": [
+    { "src": "/favicon/favicon.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/favicon/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

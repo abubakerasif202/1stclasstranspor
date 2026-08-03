@@ -1,3 +1,25 @@
 import { motion } from 'framer-motion'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
-export function IntroTruckLayer({ mobile }: { mobile: boolean }) { const reduced = useReducedMotionPreference(); return <motion.div aria-hidden="true" className="absolute inset-x-0 bottom-[14%] mx-auto h-40 w-[78vw] max-w-4xl truck-fallback shadow-[0_0_90px_rgba(213,183,94,.18)]" style={{ clipPath: 'polygon(4% 70%,15% 70%,23% 35%,68% 35%,76% 54%,91% 54%,97% 70%,100% 70%,100% 78%,93% 78%,89% 96%,77% 96%,73% 78%,30% 78%,26% 96%,14% 96%,10% 78%,4% 78%)' }} initial={{ scale: .15, y: -60, opacity: 0 }} animate={reduced ? { scale: 1, opacity: .42 } : { scale: mobile ? 1.25 : 1.65, y: mobile ? 30 : 80, opacity: [0, .85, .96, 0] }} transition={reduced ? { duration: .25 } : { duration: mobile ? 2.4 : 3.4, delay: .5, times: [0,.2,.73,1], ease: 'easeIn' }} /> }
+
+export function IntroTruckLayer({ mobile }: { mobile: boolean }) {
+  const reducedMotion = useReducedMotionPreference()
+
+  return (
+    <motion.div
+      aria-hidden="true"
+      className="absolute inset-x-0 bottom-[10%] mx-auto h-[52vh] w-[94vw] max-w-6xl overflow-hidden"
+      initial={reducedMotion ? false : { scale: 0.45, y: -40, opacity: 0 }}
+      animate={reducedMotion ? { opacity: 0.5 } : { scale: mobile ? 1.12 : 1.28, y: mobile ? 18 : 62, opacity: [0, 0.48, 0.92, 0.08] }}
+      transition={reducedMotion ? { duration: 0.2 } : { duration: mobile ? 1.55 : 2.05, delay: 0.2, times: [0, 0.18, 0.72, 1], ease: 'easeIn' }}
+    >
+      <img
+        src="/assets/trucks/k200/k200-intro-cutout.webp"
+        alt=""
+        width="1400"
+        height="787"
+        className="h-full w-full object-cover object-center opacity-95 [mask-image:linear-gradient(to_bottom,transparent_0%,black_18%,black_82%,transparent_100%)]"
+        decoding="async"
+      />
+    </motion.div>
+  )
+}

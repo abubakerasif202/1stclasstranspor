@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 720" role="img" aria-labelledby="title desc">
+  <title id="title">Div Sharma executive profile graphic</title>
+  <desc id="desc">A premium branded profile card with the initials DS and a stylised Australian transport route.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="48" x2="820" y2="690" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E313F"/>
+      <stop offset="1" stop-color="#090A0C"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="310" y1="140" x2="650" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2DF9D"/>
+      <stop offset="1" stop-color="#9F7B2B"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="720" rx="16" fill="url(#bg)"/>
+  <g opacity=".16" stroke="#E7EAED">
+    <path d="M0 110h960M0 220h960M0 330h960M0 440h960M0 550h960M120 0v720M280 0v720M440 0v720M600 0v720M760 0v720"/>
+  </g>
+  <circle cx="480" cy="330" r="188" fill="#090A0C" stroke="url(#gold)" stroke-width="3"/>
+  <circle cx="480" cy="330" r="162" fill="none" stroke="#D5B75E" stroke-dasharray="4 12" opacity=".45"/>
+  <text x="480" y="370" text-anchor="middle" fill="url(#gold)" font-family="Manrope, Arial, sans-serif" font-size="148" font-weight="800" letter-spacing="-10">DS</text>
+  <path d="M100 594c154-78 266-64 380-5 115 59 225 63 380-25" fill="none" stroke="#D5B75E" stroke-width="4"/>
+  <path d="m840 553 30 6-19 24" fill="none" stroke="#C9233C" stroke-width="8"/>
+  <circle cx="100" cy="594" r="8" fill="#C9233C"/>
+  <text x="72" y="83" fill="#D5B75E" font-family="Inter, Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="5">OPERATIONAL LEADERSHIP</text>
+  <text x="72" y="666" fill="#F7F5EF" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="2">1ST CLASS EXPRESS  /  SYDNEY, AUSTRALIA</text>
+</svg>

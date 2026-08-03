@@ -1,4 +1,5 @@
 @keyframes fog {from{transform:translate3d(-12%,0,0)}to{transform:translate3d(12%,0,0)}}
 @keyframes particle {from{transform:translate3d(0,-10vh,0);opacity:0}to{transform:translate3d(-6vw,110vh,0);opacity:.65}}
 @keyframes route {to{stroke-dashoffset:-80}}
-.fog-motion{animation:fog 7s ease-in-out infinite alternate}.particle-motion{animation:particle 2.8s linear infinite}.route-motion{stroke-dasharray:10 12;animation:route 3s linear infinite}
+@keyframes hero-glow {from{transform:translate3d(-2%,0,0) scale(.94);opacity:.55}to{transform:translate3d(4%,-3%,0) scale(1.08);opacity:.82}}
+.fog-motion{animation:fog 7s ease-in-out infinite alternate}.particle-motion{animation:particle 2.8s linear infinite}.route-motion{stroke-dasharray:10 12;animation:route 3s linear infinite}.hero-glow{animation:hero-glow 7s ease-in-out infinite alternate}

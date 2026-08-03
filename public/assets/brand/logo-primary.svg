@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 180" role="img" aria-labelledby="title desc">
+  <title id="title">1st Class Express</title>
+  <desc id="desc">1st Class Express premium transport and logistics wordmark.</desc>
+  <defs>
+    <linearGradient id="gold" x1="24" y1="18" x2="150" y2="164" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F2DF9D"/>
+      <stop offset=".48" stop-color="#D5B75E"/>
+      <stop offset="1" stop-color="#9F7B2B"/>
+    </linearGradient>
+  </defs>
+  <g>
+    <path fill="#090A0C" d="M28 8h124c11 0 20 9 20 20v124c0 11-9 20-20 20H28c-11 0-20-9-20-20V28C8 17 17 8 28 8Z"/>
+    <path fill="none" stroke="url(#gold)" stroke-width="3" d="M28 9.5h124c10.2 0 18.5 8.3 18.5 18.5v124c0 10.2-8.3 18.5-18.5 18.5H28A18.5 18.5 0 0 1 9.5 152V28C9.5 17.8 17.8 9.5 28 9.5Z"/>
+    <path fill="url(#gold)" d="M79 41h26v87H82V66L61 77V55l18-14Z"/>
+    <path fill="#C9233C" d="m105 75 42 15-42 15V96H59v-12h46v-9Z"/>
+    <path fill="#D5B75E" d="M50 132h80v7H50z"/>
+  </g>
+  <text x="203" y="90" fill="#F7F5EF" font-family="Manrope, Arial, sans-serif" font-size="76" font-weight="800" letter-spacing="-4">1ST CLASS</text>
+  <text x="208" y="142" fill="#D5B75E" font-family="Inter, Arial, sans-serif" font-size="27" font-weight="800" letter-spacing="14">EXPRESS</text>
+  <path d="M206 159h486" stroke="#C9233C" stroke-width="5"/>
+  <path d="m692 151 26 10-26 10v-20Z" fill="#C9233C"/>
+</svg>

@@ -1,38 +1,57 @@
 # 1st Class Express
 
-A standalone Vite, React and TypeScript website for 1st Class Express. It has no Base44 SDK, APIs, entities, authentication or generated runtime dependencies.
+Production Vite, React and TypeScript website for 1st Class Express.
 
-## Requirements and install
+## Local setup
 
 Use Node.js 20 or later.
 
 ```sh
-npm install
+npm ci
+cp .env.example .env
 npm run dev
 ```
 
-Other commands: `npm run build`, `npm run preview`, `npm run lint`, `npm run test`, `npm run test:coverage`, and `npm run test:e2e`.
+The application is available at `http://localhost:5173` by default.
+
+## Form delivery configuration
+
+Set public HTTPS receiver URLs in `.env` locally and in the Vercel project environment:
+
+```env
+VITE_QUOTE_FORM_ENDPOINT=https://api.example.com/forms/quote
+VITE_BOOKING_FORM_ENDPOINT=https://api.example.com/forms/booking
+VITE_CONTACT_FORM_ENDPOINT=https://api.example.com/forms/contact
+```
+
+`VITE_*` values are public in the browser bundle and must never contain secrets. Each endpoint must accept JSON `POST` requests and should return a successful HTTP status. It may optionally return JSON containing a string `reference` or `id`.
+
+If an endpoint is missing or invalid, the form displays a configuration error and directs the visitor to phone or email. The application never simulates a successful submission.
+
+## Quality checks
+
+```sh
+npm run lint
+npm run test
+npm run build
+npm run test:e2e
+```
+
+The production output is written to `dist/`.
+
+## Vercel deployment
+
+The included `vercel.json` provides SPA routing, security headers and browser/CDN caching for assets.
+
+```sh
+npm install -g vercel
+vercel login
+vercel
+vercel --prod
+```
+
+Add the three form endpoint variables in Vercel before promoting the deployment to production.
 
 ## Assets
 
-Place licensed, client-supplied assets under `public/assets/` following [docs/ASSET_REQUIREMENTS.md](docs/ASSET_REQUIREMENTS.md). This repository was supplied without the listed logo and vehicle source files, so the app uses honest local fallback visuals; it does not imitate the master logo or claim a fallback is a Kenworth vehicle.
-
-## Form endpoint configuration
-
-Configure public HTTPS endpoint URLs only (never secrets) in a local `.env` file:
-
-```env
-VITE_QUOTE_FORM_ENDPOINT=https://example.com/quote
-VITE_BOOKING_FORM_ENDPOINT=https://example.com/booking
-VITE_CONTACT_FORM_ENDPOINT=https://example.com/contact
-```
-
-In development without an endpoint, validated submissions return a clearly marked simulated success and log the payload to the development console. In production without an endpoint, forms show a configuration error and do not claim delivery. These endpoints can later be implemented using a Vercel Function, Supabase Edge Function, or the company’s existing API.
-
-## Deployment notes
-
-Build with `npm run build` and host `dist/` on a platform configured for SPA fallbacks. Provide the licensed asset files and production form endpoints before publishing.
-
-## Known external requirements
-
-The original requested source assets were absent from the working directory during build. Licensed K200/K220 photography, the supplied master logo, and a form-delivery endpoint remain external requirements.
+All deployed assets are local under `public/assets/`. Truck imagery is original K200- and K220-inspired promotional artwork rather than manufacturer photography. See [docs/ASSET_REQUIREMENTS.md](docs/ASSET_REQUIREMENTS.md) for the complete inventory.
