@@ -17,28 +17,34 @@ import { areas } from '../content/serviceAreas'
 import { seo } from '../content/seo'
 import { services } from '../content/services'
 
-const trustPoints = [
-  'Australian-owned business',
-  'Professional transport support',
-  'Reliable delivery scheduling',
-  'Flexible fleet solutions',
-  'Local, regional and interstate capability',
-  'Safe freight handling',
-  'Direct customer communication',
-  'Competitive transport options',
-  'Customer-focused service',
-  'Experienced operational leadership',
-]
-
 const processSteps = ['Request a Quote', 'Confirm Your Requirements', 'Freight Is Collected', 'Transport and Updates', 'Safe Delivery']
+const introSessionKey = '1st-class-express-intro-seen'
+
+function introWasSeen() {
+  try {
+    if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return true
+    return window.sessionStorage.getItem(introSessionKey) === 'true'
+  } catch {
+    return false
+  }
+}
 
 export function HomePage() {
-  const [introDone, setIntroDone] = useState(false)
+  const [introDone, setIntroDone] = useState(introWasSeen)
+
+  const completeIntro = () => {
+    try {
+      window.sessionStorage.setItem(introSessionKey, 'true')
+    } catch {
+      // The site remains usable when browser storage is unavailable.
+    }
+    setIntroDone(true)
+  }
 
   return (
     <>
       <SEO {...seo.home} />
-      {!introDone && <TruckArrivalIntro onComplete={() => setIntroDone(true)} />}
+      {!introDone && <TruckArrivalIntro onComplete={completeIntro} />}
       <HomeHero />
 
       <section className="bg-gold py-4" aria-label="Service highlights">
@@ -126,37 +132,6 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="section overflow-hidden bg-charcoal text-white">
-        <div className="container-page grid items-center gap-10 lg:grid-cols-[1.12fr_.88fr]">
-          <Reveal>
-            <div className="image-frame image-depth relative min-h-[27rem] overflow-hidden border-gold/30">
-              <OptimizedImage src="/assets/trucks/k220/k220-feature.webp" alt="Original cinematic artwork of a modern K220-inspired prime mover at sunrise" width={1200} height={900} className="absolute inset-0 h-full w-full object-cover" sizes="(min-width: 1024px) 54vw, 100vw" />
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-charcoal/35" aria-hidden="true" />
-            </div>
-          </Reveal>
-          <Reveal>
-            <div className="border-l border-gold pl-6">
-              <p className="eyebrow">Modern K220-inspired feature</p>
-              <h2 className="mt-3 text-4xl font-extrabold sm:text-5xl">Built for Serious Freight</h2>
-              <p className="mt-5 leading-7 text-soft-grey">From local delivery support through to large interstate freight requirements, 1st Class Express coordinates transport solutions suited to the load, route and requested timeframe.</p>
-              <div className="mt-7 flex flex-wrap gap-3">
-                <Button to="/fleet" variant="dark">Explore Our Fleet</Button>
-                <Button to="/quote">Request Vehicle Advice</Button>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="section bg-cream">
-        <div className="container-page">
-          <SectionHeading eyebrow="Why 1st Class" title="A Focus on Practical, Professional Service" />
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-            {trustPoints.map((item, index) => <div className="border-t border-gold pt-4 text-sm font-bold" key={item}><span className="mr-2 text-red">{String(index + 1).padStart(2, '0')}</span>{item}</div>)}
-          </div>
-        </div>
-      </section>
-
       <section className="section bg-white">
         <div className="container-page">
           <SectionHeading eyebrow="Delivery process" title="Simple Steps. Reliable Delivery." />
@@ -202,15 +177,6 @@ export function HomePage() {
               </div>
             </div>
           </Reveal>
-        </div>
-      </section>
-
-      <section className="section bg-cream">
-        <div className="container-page grid gap-12 lg:grid-cols-2">
-          <SectionHeading eyebrow="Professional drivers" title="Professional Drivers and Reliable Representation" copy="1st Class Express places importance on driver presentation, professional communication, safe operating practices and reliable customer service. Where agreed, drivers may represent customer businesses professionally and follow suitable delivery instructions or presentation requirements." />
-          <div className="grid gap-4 sm:grid-cols-2">
-            {['Professional presentation', 'Safe delivery practices', 'Customer communication', 'Reliable scheduling', 'Flexible service arrangements', 'Careful freight handling'].map((item) => <p className="border-l-2 border-red bg-white p-5 text-sm font-bold shadow-sm" key={item}>{item}</p>)}
-          </div>
         </div>
       </section>
 

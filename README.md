@@ -41,6 +41,8 @@ The production output is written to `dist/`.
 
 The included `vercel.json` provides SPA routing, security headers and browser/CDN caching for assets.
 
+The Content Security Policy allows the production bundle, the Formspree connection and the exact inline Organization JSON-LD block in `index.html`. If that JSON-LD block changes, regenerate and update its SHA-256 value in `vercel.json` before deployment.
+
 ```sh
 npm install -g vercel
 vercel login

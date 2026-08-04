@@ -23,6 +23,8 @@ export function Brand() {
 export function SiteHeader() {
   const [open, setOpen] = useState(false)
   const firstMobileLink = useRef<HTMLAnchorElement>(null)
+  const menuButton = useRef<HTMLButtonElement>(null)
+  const mobileMenu = useRef<HTMLDivElement>(null)
   const location = useLocation()
   const scrolled = useScrollProgress()
 
@@ -30,12 +32,33 @@ export function SiteHeader() {
 
   useEffect(() => {
     if (!open) return
+    const menuButtonNode = menuButton.current
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') setOpen(false)
+      if (event.key === 'Escape') {
+        setOpen(false)
+        window.requestAnimationFrame(() => menuButtonNode?.focus())
+        return
+      }
+      if (event.key !== 'Tab') return
+
+      const focusable = Array.from(mobileMenu.current?.querySelectorAll<HTMLElement>('a, button') ?? []).filter((element) => !element.hasAttribute('disabled'))
+      const first = focusable[0]
+      const last = focusable.at(-1)
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault()
+        last?.focus()
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault()
+        first?.focus()
+      }
     }
     document.addEventListener('keydown', handleKeyDown)
+    document.body.style.overflow = 'hidden'
     firstMobileLink.current?.focus()
-    return () => document.removeEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
   }, [open])
 
   const solid = scrolled || location.pathname !== '/'
@@ -50,7 +73,7 @@ export function SiteHeader() {
             <NavLink
               key={item.to}
               to={item.to}
-              className={({ isActive }) => `text-xs font-bold uppercase tracking-[.12em] text-soft-grey transition hover:text-gold ${isActive ? 'text-gold' : ''}`}
+              className={({ isActive }) => `border-b-2 py-2 text-xs font-bold uppercase tracking-[.12em] transition hover:text-gold ${isActive ? 'border-gold text-gold' : 'border-transparent text-soft-grey'}`}
               end={item.to === '/'}
             >
               {item.label}
@@ -63,6 +86,7 @@ export function SiteHeader() {
             <Phone size={20} />
           </a>
           <button
+            ref={menuButton}
             className="rounded-sm border border-white/30 p-3 text-white transition hover:border-gold hover:text-gold"
             type="button"
             aria-label={open ? 'Close navigation' : 'Open navigation'}
@@ -75,14 +99,14 @@ export function SiteHeader() {
         </div>
       </div>
       {open && (
-        <div className="border-t border-white/10 bg-charcoal shadow-2xl xl:hidden" id="mobile-navigation">
+        <div ref={mobileMenu} className="max-h-[calc(100dvh-4.75rem)] overflow-y-auto border-t border-white/10 bg-charcoal shadow-2xl xl:hidden" id="mobile-navigation">
           <nav className="container-page flex flex-col py-4" aria-label="Mobile navigation">
             {navigation.map((item, index) => (
               <NavLink
                 ref={index === 0 ? firstMobileLink : undefined}
                 key={item.to}
                 to={item.to}
-                className={({ isActive }) => `border-b border-white/10 py-4 text-sm font-bold ${isActive ? 'text-gold' : 'text-white'}`}
+                className={({ isActive }) => `flex min-h-12 items-center border-b border-white/10 py-3 text-sm font-bold ${isActive ? 'text-gold' : 'text-white'}`}
               >
                 {item.label}
               </NavLink>

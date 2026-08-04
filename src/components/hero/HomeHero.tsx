@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
-import { Link } from 'react-router-dom'
 import { company } from '../../content/company'
 import { useReducedMotionPreference } from '../../hooks/useReducedMotionPreference'
 import { Button } from '../common/Button'
@@ -40,7 +39,6 @@ export function HomeHero() {
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button to="/quote">Get a Free Quote <ArrowRight size={17} /></Button>
             <Button to="/book" variant="dark">Book a Delivery</Button>
-            <Link className="inline-flex min-h-12 items-center justify-center gap-2 px-3 py-3 text-sm font-bold text-white underline decoration-gold underline-offset-8 hover:text-gold" to="/services">Explore Our Services</Link>
           </div>
         </motion.div>
 
@@ -51,8 +49,8 @@ export function HomeHero() {
           transition={{ delay: reducedMotion ? 0 : 0.55, duration: 0.7 }}
         >
           <p className="text-xs font-bold uppercase tracking-[.16em] text-gold">Delivery Enquiry</p>
-          <p className="mt-3 font-display text-2xl font-bold">Need a transport solution?</p>
-          <p className="mt-2 text-sm leading-6 text-soft-grey">Tell us where the freight is moving and we’ll help identify a suitable option.</p>
+          <p className="mt-3 font-display text-2xl font-bold">Complex load or urgent timing?</p>
+          <p className="mt-2 text-sm leading-6 text-soft-grey">Speak directly with Div about the route, freight and timing before you submit.</p>
           <a className="mt-4 inline-flex items-center gap-2 text-sm font-bold text-white hover:text-gold" href={company.phoneHref}>Speak with Div <ArrowRight size={16} /></a>
         </motion.aside>
 

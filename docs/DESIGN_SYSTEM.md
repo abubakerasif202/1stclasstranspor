@@ -14,4 +14,4 @@ Red is reserved for primary actions; gold provides fine dividers and labels. Car
 
 ## Motion and accessibility
 
-Motion is transform and opacity based, restrained, paused by reduced-motion preferences, and avoids touch tilt. The intro supports visible skip, Escape and scroll restoration. Pages include landmarks, visible focus, semantic headings, labelled forms, active navigation and skip-to-content support. Automated checks are smoke tests, not an assertion of perfect accessibility.
+Motion is transform and opacity based, restrained, paused by reduced-motion preferences, and avoids touch tilt. The cinematic intro supports visible skip, Escape and scroll restoration, and is shown only once per browser session so it does not repeatedly block returning visitors. Page content itself never depends on an entrance animation to become visible. Pages include landmarks, visible focus, semantic headings, labelled forms, required-field identification, active navigation, keyboard-contained mobile navigation and skip-to-content support. Automated checks are smoke tests, not an assertion of perfect accessibility.

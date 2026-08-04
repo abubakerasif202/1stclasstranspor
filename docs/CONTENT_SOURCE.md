@@ -2,7 +2,9 @@
 
 ## Source audit
 
-The supplied-file names in the brief were not present in the current working directory. The live Base44 reference was not accessible through the available browser tooling. No Base44 code was inspected or copied.
+The official square and portrait logo files, legacy fleet screenshot, archived production HTML and full-page legacy-site PDF supplied for the review were inspected alongside the current repository and live Vercel deployment. The deployed brand lockups are derived from the supplied official identity and remain the preferred web-ready assets.
+
+Where the legacy archive and the current project brief differ, the current repository brief remains authoritative for contact details and leadership information. Legacy material is used for historical content and visual context, not to silently overwrite current business details.
 
 ## Preserved content
 

@@ -17,6 +17,7 @@ export function SiteFooter() {
           <p className="eyebrow">Navigate</p>
           <div className="mt-4 grid grid-cols-2 gap-3">
             {navigation.map((item) => <Link className="text-sm hover:text-gold" key={item.to} to={item.to}>{item.label}</Link>)}
+            <Link className="text-sm font-semibold text-gold hover:text-gold-light" to="/quote">Request a Quote</Link>
             <Link className="text-sm hover:text-gold" to="/privacy">Privacy</Link>
             <Link className="text-sm hover:text-gold" to="/terms">Terms</Link>
           </div>
